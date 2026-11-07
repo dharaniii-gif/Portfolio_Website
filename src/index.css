@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Custom Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222226;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #383842;
+}
+
+/* 3D Carousel Perspective System */
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Glassmorphism & Editorial Glow */
+.glass-panel {
+  background: rgba(14, 14, 18, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(20, 20, 26, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+.subtle-border {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.editorial-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.12) 25%, rgba(255, 255, 255, 0.12) 75%, transparent 100%);
+}
+
+/* Subtle grain simulation */
+.bg-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+}
+
+/* Ambient Lamp & Laptop Screen Light Animation */
+@keyframes ambientLightPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes screenGlowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes lightBeamSweep {
+  0% {
+    transform: translateX(-150%) rotate(20deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.25;
+  }
+  60% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateX(250%) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+.animate-ambient-light {
+  animation: ambientLightPulse 5s ease-in-out infinite;
+}
+
+.animate-screen-glow {
+  animation: screenGlowPulse 4s ease-in-out infinite;
+}
+
+.animate-light-beam {
+  animation: lightBeamSweep 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
