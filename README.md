@@ -1,32 +1,42 @@
-# React + TypeScript + Vite
+# Dharani S. | Creative Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A personal portfolio showcasing my work, skills, and creative approach to web development and UI/UX design.
 
-Currently, two official plugins are available:
+🌐 **Live Portfolio:** https://dharaniii-gif.github.io/Portfolio_Website/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## About Me
 
-## React Compiler
+I'm a Computer Science student and Creative Developer interested in building engaging digital experiences through frontend development and user-centered design.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+I enjoy combining creativity, functionality, and thoughtful design to create meaningful web experiences.
 
-## Expanding the Oxlint configuration
+## Skills & Technologies
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Frontend:** HTML, CSS, JavaScript
+- **Programming:** Java, SQL
+- **Design:** UI/UX Design, Responsive Web Design
+- **Tools:** Git, GitHub
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Featured Projects
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Some of the projects showcased in my portfolio:
+
+- **Elite Canine** – UI/UX design project
+- **ShopSphere Dashboard** – Dashboard interface project
+- **Restaurant Website** – Web design and development
+- **Game Projects** – Interactive game projects
+- **Dharani Web Designer** – Web design project
+
+Explore the portfolio for project previews and more details.
+
+## Connect With Me
+
+- **LinkedIn:** https://www.linkedin.com/in/dharani2006
+- **GitHub:** https://github.com/dharaniii-gif
+- **Portfolio:** https://dharaniii-gif.github.io/Portfolio_Website/
+
+---
+
+*Designed and developed with creativity, curiosity, and a passion for building better digital experiences.*
+
+© 2026 Dharani S.
