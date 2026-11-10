@@ -1,18 +1,1467 @@
-<!doctype html>
-<html lang="en" class="dark scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23050505'/><path d='M30 25 H55 C70 25, 75 35, 75 50 C75 65, 70 75, 55 75 H30 Z' fill='none' stroke='%23F5F5F0' stroke-width='6'/><circle cx='50' cy='50' r='5' fill='%23C084FC'/></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dharani S. — Creative Developer & UI/UX Specialist</title>
-    <meta name="description" content="Portfolio of Dharani S. - Creative Developer specializing in modern frontend, full-stack architectures, and editorial UI/UX." />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#050505] text-[#F5F5F0] selection:bg-white/20 selection:text-white antialiased overflow-x-hidden font-sans">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dharani — Creative Developer & UI/UX Specialist</title>
+  <meta name="description" content="Portfolio of Dharani S. — Creative Developer & UI/UX Specialist based in Coimbatore, India. Specializing in frontend architecture, full-stack systems, and human-centered design.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#050505',
+            surface: '#0c0c10',
+            ivory: '#F5F5F0',
+            mutedIvory: '#A3A39E',
+            silver: '#D1D5DB',
+            amberGlow: '#FBBF24',
+            blueGlow: '#0284C7',
+            greenGlow: '#10B981'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Cinzel"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #404040;
+    }
+
+    /* Editorial Separator */
+    .editorial-divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 30%, rgba(255, 255, 255, 0.15) 70%, transparent 100%);
+    }
+
+    /* 3D Perspective Container */
+    .perspective-container {
+      perspective: 1200px;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* Glass Effect */
+    .glass-panel {
+      background: rgba(12, 12, 16, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-[#050505] text-[#F5F5F0] font-sans antialiased selection:bg-white/20 selection:text-white min-h-screen relative overflow-x-hidden">
+
+  <!-- ======================================================================= -->
+  <!-- FLOATING NAVIGATION BAR                                                 -->
+  <!-- ======================================================================= -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-12 bg-[#050505]/80 backdrop-blur-xl border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Monogram Brand Logo -->
+      <a href="#home" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-9 h-9 rounded-full bg-white/[0.05] border border-white/10 flex items-center justify-center font-serif text-lg text-ivory group-hover:border-white/30 group-hover:scale-105 transition-all">
+          D
+        </div>
+        <span class="font-serif text-xl tracking-wide text-ivory group-hover:text-white transition-colors">
+          Dharani
+        </span>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#home" class="text-xs font-mono uppercase tracking-[0.2em] text-silver/70 hover:text-white transition-colors">Home</a>
+        <a href="#about" class="text-xs font-mono uppercase tracking-[0.2em] text-silver/70 hover:text-white transition-colors">About</a>
+        <a href="#skills" class="text-xs font-mono uppercase tracking-[0.2em] text-silver/70 hover:text-white transition-colors">Skills</a>
+        <a href="#projects" class="text-xs font-mono uppercase tracking-[0.2em] text-silver/70 hover:text-white transition-colors">Projects</a>
+        <a href="#resume" class="text-xs font-mono uppercase tracking-[0.2em] text-silver/70 hover:text-white transition-colors">Resume</a>
+        <a href="#contact" class="text-xs font-mono uppercase tracking-[0.2em] text-silver/70 hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <!-- Action Button & Mobile Hamburger -->
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/[0.04] text-xs font-mono uppercase tracking-wider text-ivory hover:text-black hover:bg-white transition-all">
+          <span>Let's Talk</span>
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-silver hover:text-white" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 space-y-3 border-t border-white/10 mt-3">
+      <a href="#home" class="mobile-nav-link block text-xs font-mono uppercase tracking-[0.2em] text-silver/80 py-1">Home</a>
+      <a href="#about" class="mobile-nav-link block text-xs font-mono uppercase tracking-[0.2em] text-silver/80 py-1">About</a>
+      <a href="#skills" class="mobile-nav-link block text-xs font-mono uppercase tracking-[0.2em] text-silver/80 py-1">Skills</a>
+      <a href="#projects" class="mobile-nav-link block text-xs font-mono uppercase tracking-[0.2em] text-silver/80 py-1">Projects</a>
+      <a href="#resume" class="mobile-nav-link block text-xs font-mono uppercase tracking-[0.2em] text-silver/80 py-1">Resume</a>
+      <a href="#contact" class="mobile-nav-link block text-xs font-mono uppercase tracking-[0.2em] text-silver/80 py-1">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ======================================================================= -->
+  <!-- HERO SECTION                                                            -->
+  <!-- ======================================================================= -->
+  <header id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-6 select-none bg-[#050505]">
+    
+    <!-- Full-Bleed 4K Workspace Image -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      <img
+        src="hero-laptop.jpg"
+        alt="Dark Minimal Workspace Setup"
+        class="w-full h-full object-cover object-center filter brightness-95 contrast-105"
+      />
+      <!-- Gentle ambient vignettes -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/65 to-[#050505]/40"></div>
+      <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050505] to-transparent"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-5xl mx-auto text-center space-y-8 py-16">
+      
+      <!-- Role Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md shadow-lg">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs font-mono uppercase tracking-[0.25em] text-silver/90">
+          Creative Developer | Development + UI/UX
+        </span>
+      </div>
+
+      <!-- Main Display Title -->
+      <div class="space-y-4">
+        <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-ivory font-normal tracking-tight leading-[0.95]">
+          Port<span class="italic font-light text-white">folio</span>
+        </h1>
+        <p class="font-sans text-sm sm:text-base md:text-lg text-mutedIvory max-w-xl mx-auto font-light leading-relaxed">
+          Turning ideas into beautiful, responsive, and meaningful digital experiences.
+        </p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a href="#projects" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-mono text-xs uppercase tracking-[0.2em] font-semibold hover:bg-ivory hover:shadow-2xl transition-all duration-300">
+          <span>Explore Works</span>
+          <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/20 bg-white/[0.04] text-ivory font-mono text-xs uppercase tracking-[0.2em] font-medium hover:bg-white/10 hover:border-white/40 transition-all duration-300">
+          <span>Get in Touch</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 hover:text-white transition-colors z-10">
+      <span class="font-mono text-[10px] uppercase tracking-widest">Scroll</span>
+      <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+    </a>
+  </header>
+
+  <!-- ======================================================================= -->
+  <!-- ABOUT ME SECTION                                                        -->
+  <!-- ======================================================================= -->
+  <section id="about" class="relative py-28 px-6 md:px-12 bg-[#050505] overflow-hidden">
+    
+    <!-- Full Cover Background Texture -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0">
+      <img
+        src="about-bg.jpg"
+        alt="Dark Texture Background"
+        class="w-full h-full object-cover object-center filter brightness-95 contrast-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-[#050505]"></div>
+      <div class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#050505] to-transparent"></div>
+      <div class="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#050505] to-transparent"></div>
+    </div>
+
+    <!-- Editorial Divider -->
+    <div class="max-w-7xl mx-auto mb-20 relative z-10">
+      <div class="editorial-divider"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left Editorial Story -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-white/40">02 //</span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-silver/80">About Me</span>
+          </div>
+
+          <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-ivory font-normal leading-[1.1] tracking-tight">
+            A curious mind with <span class="italic font-light text-white">big dreams.</span>
+          </h2>
+
+          <div class="space-y-4 text-mutedIvory text-base sm:text-lg font-light leading-relaxed">
+            <p>
+              Hello, I am <span class="text-ivory font-normal">Dharani</span> — a Creative Developer and UI/UX specialist operating at the intersection of computational engineering and refined visual aesthetics. Currently pursuing my Computer Science degree in Coimbatore, I combine robust backend logic with an intuitive eye for user-centric interaction design.
+            </p>
+            <p>
+              My work is driven by the conviction that code should not only function reliably behind the scenes—it should evoke delight, simplicity, and confidence on the screen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Credentials Cards -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="text-xs font-mono uppercase tracking-[0.2em] text-white/40 mb-2">
+            Credentials & Metrics
+          </div>
+
+          <!-- Degree -->
+          <div class="p-6 rounded-2xl glass-panel hover:border-white/25 transition-all group">
+            <div class="flex items-start justify-between">
+              <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-ivory group-hover:scale-105 transition-transform">
+                <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-[11px] uppercase tracking-wider text-mutedIvory/60">Degree</span>
+            </div>
+            <div class="mt-4">
+              <h3 class="font-serif text-2xl text-ivory font-medium">B.Sc Computer Science</h3>
+              <p class="text-xs text-mutedIvory/80 mt-1 font-mono">KPR College of Arts Science and Research</p>
+            </div>
+          </div>
+
+          <!-- Timeline & CGPA -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl glass-panel hover:border-white/25 transition-all">
+              <div class="flex items-center gap-2 text-mutedIvory/60 mb-3">
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+                <span class="font-mono text-[10px] uppercase tracking-wider">Timeline</span>
+              </div>
+              <div class="font-mono text-lg text-ivory font-medium">2024 – Present</div>
+              <div class="text-[11px] text-mutedIvory/60 mt-1">Undergraduate Study</div>
+            </div>
+
+            <div class="p-5 rounded-2xl glass-panel hover:border-white/25 transition-all">
+              <div class="flex items-center gap-2 text-mutedIvory/60 mb-3">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span class="font-mono text-[10px] uppercase tracking-wider">Academic Merit</span>
+              </div>
+              <div class="font-serif text-2xl text-ivory font-medium">CGPA: 7.5</div>
+              <div class="text-[11px] text-mutedIvory/60 mt-1">Strong Core Foundation</div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="p-6 rounded-2xl glass-panel hover:border-white/25 transition-all group">
+            <div class="flex items-start justify-between">
+              <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-ivory group-hover:scale-105 transition-transform">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-[11px] uppercase tracking-wider text-emerald-400/80 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Based In
+              </span>
+            </div>
+            <div class="mt-4">
+              <h3 class="font-serif text-2xl text-ivory font-medium">Coimbatore, India</h3>
+              <p class="text-xs text-mutedIvory/80 mt-1 font-mono">Tamil Nadu • Creative Developer</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- SKILLS & TECHNOLOGIES SECTION (PURE LOGOS)                              -->
+  <!-- ======================================================================= -->
+  <section id="skills" class="relative py-28 px-6 md:px-12 bg-[#050505] overflow-hidden">
+    
+    <!-- Editorial Divider -->
+    <div class="max-w-7xl mx-auto mb-20 relative z-10">
+      <div class="editorial-divider mb-16"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-white/40">03 //</span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-silver/80">Expertise & Stack</span>
+          </div>
+          <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-ivory font-normal tracking-tight">
+            Skills & <span class="italic font-light text-white">Technologies.</span>
+          </h2>
+        </div>
+        <p class="max-w-md text-sm text-mutedIvory font-light leading-relaxed">
+          Organized across frontend client experiences, backend architectures, relational and document databases, and development tooling.
+        </p>
+      </div>
+    </div>
+
+    <!-- Categorized Skills Showcase -->
+    <div class="max-w-7xl mx-auto space-y-16 relative z-10" id="skills-container">
+
+      <!-- FRONTEND -->
+      <div class="space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
+          <div class="flex items-center gap-4">
+            <div class="p-3 rounded-2xl bg-[#0e0e14] border border-white/10 shadow-inner">
+              <i data-lucide="layers" class="w-5 h-5 text-blue-400"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-3xl sm:text-4xl text-white font-medium tracking-tight">Frontend</h3>
+              <p class="text-xs sm:text-sm font-sans text-mutedIvory/80 font-light mt-0.5">Interfaces & UI Experience</p>
+            </div>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-silver/70 px-3.5 py-1 rounded-full bg-white/[0.03] border border-white/10">5 Technologies</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-start gap-8 sm:gap-12 md:gap-16 pt-2">
+          <!-- HTML5 -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(228,77,38,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#E44D26" d="M19.2 114.7L9.8 9.3h108.4l-9.4 105.4L64 128l-44.8-13.3z"/><path fill="#F16529" d="M64 118.6l36.8-10.2 8-89.9H64v100.1z"/><path fill="#EBEBEB" d="M64 55.4H47.1l-1.2-13.1H64V29.7H32.6l3.5 38.3H64V55.4zm0 35.8l-.2.1-14.7-4-1-10.8H35.4l1.9 21.6 26.6 7.4.1-.3V91.2z"/><path fill="#FFFFFF" d="M63.9 55.4v12.6h15.7l-1.5 16.6-14.2 3.8v13.1l25.6-7.1.2-2.3 2.9-32.9.4-3.8H63.9zm0-25.7v12.6h31.8l.3-3.1.8-9.5H63.9z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">HTML5</span>
+          </div>
+          <!-- CSS3 -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(38,77,228,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#264DE4" d="M19.2 114.7L9.8 9.3h108.4l-9.4 105.4L64 128l-44.8-13.3z"/><path fill="#2965F1" d="M64 118.6l36.8-10.2 8-89.9H64v100.1z"/><path fill="#EBEBEB" d="M64 55.4H47.1l-1.2-13.1H64V29.7H32.6l3.5 38.3H64V55.4zm0 35.8l-.2.1-14.7-4-1-10.8H35.4l1.9 21.6 26.6 7.4.1-.3V91.2z"/><path fill="#FFFFFF" d="M63.9 55.4v12.6h15.7l-1.5 16.6-14.2 3.8v13.1l25.6-7.1.2-2.3 2.9-32.9.4-3.8H63.9zm0-25.7v12.6h31.8l.3-3.1.8-9.5H63.9z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">CSS3</span>
+          </div>
+          <!-- JavaScript -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(247,223,30,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#F7DF1E" d="M1.4 1.4h125.2v125.2H1.4z"/><path fill="#000" d="M27.7 100.4l11-6.7c2.1 3.7 4.3 6.8 8.8 6.8 4.5 0 7.3-1.8 7.3-8.8V47.5h14v44.3c0 13.1-7.7 18.9-19.9 18.9-10.8 0-17-5.6-21.2-10.3zm47-1.9l10.9-6.3c3 4.9 7.6 8.7 14.2 8.7 5.9 0 9.7-2.9 9.7-6.9 0-4.8-3.9-6.5-10.4-9.3l-3.6-1.5c-10.3-4.4-17.2-9.9-17.2-21.8 0-10.8 8.3-19 21.1-19 9.1 0 15.7 3.3 20.3 11.2l-9.7 6.2c-2.2-3.8-5.2-5.6-10.4-5.6-4.6 0-7.4 2.1-7.4 5.5 0 3.8 2.9 5.4 8.9 8l3.6 1.5c12.2 5.2 18.9 10.5 18.9 22.5 0 12.8-10 20-23.5 20-13.1 0-21.7-6.3-25.5-14.7z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">JavaScript</span>
+          </div>
+          <!-- React -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(97,218,251,0.5)]">
+              <svg viewBox="-11.5 -10.2 23 20.4" class="w-16 h-16 sm:w-20 sm:h-20"><circle cx="0" cy="0" r="2.05" fill="#61DAFB"/><g stroke="#61DAFB" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/></g></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">React</span>
+          </div>
+          <!-- Bootstrap -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(121,82,179,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#7952B3" d="M16 28.5C16 19.4 23.4 12 32.5 12h63c9.1 0 16.5 7.4 16.5 16.5v71c0 9.1-7.4 16.5-16.5 16.5h-63C23.4 116 16 108.6 16 99.5v-71z"/><path fill="#FFF" d="M48.2 38.3h20.6c7.9 0 13.5 1.7 17.2 5.2 3.6 3.4 5.4 8.2 5.4 14.2 0 4.5-1.2 8.3-3.6 11.4-2.4 3-5.9 5.2-10.6 6.3 5.7 1.1 9.9 3.5 12.8 7.1 2.9 3.6 4.3 8.3 4.3 14 0 6.6-2.1 11.9-6.3 15.8-4.2 3.9-10.5 5.8-19 5.8H48.2V38.3zm14.8 28.4h5.2c4.1 0 7.2-.8 9.3-2.3 2.1-1.6 3.2-4 3.2-7.2 0-3.3-1.1-5.7-3.2-7.1-2.1-1.4-5.2-2.1-9.3-2.1H63v18.7zm0 37.4h6.3c4.8 0 8.4-.9 10.7-2.7 2.3-1.8 3.5-4.6 3.5-8.3 0-3.6-1.1-6.3-3.4-8.1-2.3-1.8-5.9-2.7-10.8-2.7H63v21.8z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BACKEND -->
+      <div class="space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
+          <div class="flex items-center gap-4">
+            <div class="p-3 rounded-2xl bg-[#0e0e14] border border-white/10 shadow-inner">
+              <i data-lucide="server" class="w-5 h-5 text-emerald-400"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-3xl sm:text-4xl text-white font-medium tracking-tight">Backend</h3>
+              <p class="text-xs sm:text-sm font-sans text-mutedIvory/80 font-light mt-0.5">Server Systems & OOP Logic</p>
+            </div>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-silver/70 px-3.5 py-1 rounded-full bg-white/[0.03] border border-white/10">3 Technologies</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-start gap-8 sm:gap-12 md:gap-16 pt-2">
+          <!-- Node.js -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(51,153,51,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#339933" d="M64 8.9L16.3 36.4v55.2L64 119.1l47.7-27.5V36.4L64 8.9zm37.9 77.2L64 107.8 26.1 86.1V42.6L64 20.8l37.9 21.8v43.5z"/><path fill="#339933" d="M64 43.1L38.4 57.9v29.6L64 102.3l25.6-14.8V57.9L64 43.1zm16.5 39.8L64 92.5l-16.5-9.6V65.7L64 56.1l16.5 9.6v17.2z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Node.js</span>
+          </div>
+          <!-- Express.js (White Badge) -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(255,255,255,0.4)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><circle cx="64" cy="64" r="60" fill="#FFFFFF"/><text x="64" y="80" fill="#181818" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="62" font-weight="300" letter-spacing="-2" text-anchor="middle">ex</text></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Express.js</span>
+          </div>
+          <!-- Java -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(234,45,46,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#5382A1" d="M46.7 94.6s-5.6 1.4-8.8 1.4c-8.9 0-11-4.7-11-4.7s2.5 1.4 7.6 1.4c7.3 0 12.2-4.1 12.2-4.1zm1.2-8.3s-4.6 1.9-8.4 2.4c-6.1.8-11.4-.4-11.4-.4s2.3.9 6.8 1.1c7 .2 13-3.1 13-3.1zm1.9-9.1s-4.3 2.1-7.7 2.7c-5.8 1-11.2.5-11.2.5s2.3.8 6.4 1c6.5.3 12.5-4.2 12.5-4.2zm2.1-9s-4.1 2.3-7.2 3.1c-5.2 1.3-10.7 1.4-10.7 1.4s2.3.6 5.9.8c6 .2 12-5.3 12-5.3zm2.5-8.5s-4 2.5-6.9 3.4c-4.8 1.5-10.2 2-10.2 2s2.2.5 5.5.7c5.4.3 11.6-6.1 11.6-6.1zm2.3-7.9s-3.7 2.7-6.4 3.7c-4.4 1.7-9.5 2.5-9.5 2.5s2.1.4 5.1.5c4.8.2 10.8-6.7 10.8-6.7z"/><path fill="#E76F00" d="M72.2 44.8s-3.3 3.6-7.8 7.3c-7.3 6-15.5 13.8-15.5 23.9 0 7.7 4.7 13.7 12.2 17.6 7.4 3.8 17.5 4.8 28 3 14.5-2.5 24.3-10.6 24.3-21.7 0-14.7-15.9-22.1-24.3-27.1-7.2-4.3-16.9-3-16.9-3zm18.4 46.1c-8.9 1.6-17.5.8-23.7-2.3-6.2-3.2-9.9-8.1-9.9-14.1 0-8.2 6.9-14.7 13.5-20.2 4.1-3.4 7.2-6.7 7.2-6.7s7.8 3.8 13.7 7.7c7.1 4.7 18.5 10.6 18.5 21.2.1 8.7-7.7 13.1-19.3 14.4z"/><path fill="#5382A1" d="M77.1 13.6s-10.7 10.7-5.9 21.8c5.4 12.5-2.5 19.3-2.5 19.3s10.3-6.1 5.9-19c-4-11.8 2.5-22.1 2.5-22.1zm-8.4 8.7s-8.1 8.1-4.5 16.5c4.1 9.5-1.9 14.7-1.9 14.7s7.8-4.6 4.5-14.4c-3.1-9 1.9-16.8 1.9-16.8z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Java</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATABASE -->
+      <div class="space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
+          <div class="flex items-center gap-4">
+            <div class="p-3 rounded-2xl bg-[#0e0e14] border border-white/10 shadow-inner">
+              <i data-lucide="database" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-3xl sm:text-4xl text-white font-medium tracking-tight">Database</h3>
+              <p class="text-xs sm:text-sm font-sans text-mutedIvory/80 font-light mt-0.5">Data Architecture & Storage</p>
+            </div>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-silver/70 px-3.5 py-1 rounded-full bg-white/[0.03] border border-white/10">3 Technologies</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-start gap-8 sm:gap-12 md:gap-16 pt-2">
+          <!-- MongoDB (White Badge) -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(71,162,72,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><circle cx="64" cy="64" r="60" fill="#FFFFFF"/><path fill="#47A248" d="M64 24s-19 22-19 44c0 14 9.5 24.5 19 28 9.5-3.5 19-14 19-28 0-22-19-44-19-44z"/><path fill="#3FA037" d="M64 24v72c9.5-3.5 19-14 19-28 0-22-19-44-19-44z"/><path fill="#FFFFFF" d="M63 94c-.6 1.8-1.5 3.5-2.5 5 1.2.6 2.4.9 3.5 1 1.1-.1 2.3-.4 3.5-1-1-1.5-1.9-3.2-2.5-5h-2z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">MongoDB</span>
+          </div>
+          <!-- MySQL -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(0,117,143,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#00758F" d="M64 14C36.4 14 14 36.4 14 64s22.4 50 50 50 50-22.4 50-50S91.6 14 64 14zm25.1 66.8c-1.4 5.9-5.4 10.3-10.7 12.3-6.2 2.3-13.7 1.3-19.4-2.7-2.3-1.6-4.2-3.8-5.6-6.2-2.6-4.5-3.3-9.9-2-15 1.3-5.2 4.6-9.6 9.1-12.3 5.4-3.3 12.2-3.9 18.1-1.6 5.8 2.3 10.3 7.3 11.8 13.4.6 2.4.8 5.1.3 7.7-.3 1.5-.9 3-1.6 4.4z"/><path fill="#F29111" d="M68.5 56.4c-3.1-1.2-6.7-.9-9.5.8-2.4 1.4-4.1 3.8-4.8 6.5-.7 2.7-.3 5.6 1.1 7.9.7 1.3 1.8 2.4 3 3.3 3 2.1 7 2.6 10.3 1.4 2.8-1 4.9-3.4 5.7-6.5.3-1.4.2-2.8-.2-4.1-.8-3.2-3.1-5.9-6.2-7.1-.6-.2-1.2-.4-1.8-.5z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">MySQL</span>
+          </div>
+          <!-- SQL -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(204,34,0,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#CC292B" d="M64 12C35.3 12 12 35.3 12 64s23.3 52 52 52 52-23.3 52-52S92.7 12 64 12z"/><ellipse cx="64" cy="38" rx="36" ry="14" fill="#FFFFFF"/><path fill="#E6E6E6" d="M28 38v24c0 7.7 16.1 14 36 14s36-6.3 36-14V38c0 7.7-16.1 14-36 14s-36-6.3-36-14z"/><path fill="#CCCCCC" d="M28 62v24c0 7.7 16.1 14 36 14s36-6.3 36-14V62c0 7.7-16.1 14-36 14s-36-6.3-36-14z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLS & DESIGN -->
+      <div class="space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
+          <div class="flex items-center gap-4">
+            <div class="p-3 rounded-2xl bg-[#0e0e14] border border-white/10 shadow-inner">
+              <i data-lucide="wrench" class="w-5 h-5 text-purple-400"></i>
+            </div>
+            <div>
+              <h3 class="font-serif text-3xl sm:text-4xl text-white font-medium tracking-tight">Tools & Design</h3>
+              <p class="text-xs sm:text-sm font-sans text-mutedIvory/80 font-light mt-0.5">Dev Tools & UI/UX Workflow</p>
+            </div>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-silver/70 px-3.5 py-1 rounded-full bg-white/[0.03] border border-white/10">6 Tools</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-start gap-8 sm:gap-12 md:gap-16 pt-2">
+          <!-- Visily -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(107,70,193,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><rect width="120" height="120" x="4" y="4" rx="28" fill="#6B46C1"/><path fill="#FFFFFF" d="M38 36h18l14 36 14-36h18L76 96H58L38 36z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Visily</span>
+          </div>
+          <!-- Figma -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(242,78,30,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#0ACF83" d="M43 124c11.6 0 21-9.4 21-21V82H43c-11.6 0-21 9.4-21 21s9.4 21 21 21z"/><path fill="#A259FF" d="M22 61c0-11.6 9.4-21 21-21h21v42H43c-11.6 0-21-9.4-21-21z"/><path fill="#F24E1E" d="M22 19c0-11.6 9.4-21 21-21h21v42H43C31.4 40 22 30.6 22 19z"/><path fill="#FF7262" d="M64-2h21c11.6 0 21 9.4 21 21s-9.4 21-21 21H64V-2z"/><path fill="#1ABCFE" d="M106 61c0 11.6-9.4 21-21 21H64V40h21c11.6 0 21 9.4 21 21z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Figma</span>
+          </div>
+          <!-- Postman -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(255,108,55,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><circle cx="64" cy="64" r="60" fill="#FF6C37"/><path fill="#FFFFFF" d="M96.4 54.8c-.8-1.5-2.2-2.5-3.8-2.9l-22.3-5-10.4-20c-.8-1.5-2.2-2.5-3.8-2.9-1.6-.4-3.3 0-4.6 1l-18.4 14.7-22.3-5c-1.6-.4-3.3 0-4.6 1s-2 2.7-1.9 4.3l2.8 22.8-14.7 18.4c-1 1.3-1.4 3-1 4.6.4 1.6 1.4 3 2.9 3.8l20 10.4 5 22.3c.4 1.6 1.4 3 2.9 3.8 1.5.8 3.3.8 4.8 0l22.8-11.4 22.8 11.4c1.5.8 3.3.8 4.8 0 1.5-.8 2.5-2.2 2.9-3.8l5-22.3 20-10.4c1.5-.8 2.5-2.2 2.9-3.8.4-1.6 0-3.3-1-4.6l-14.7-18.4 2.8-22.8c.1-1.6-.6-3.2-1.9-4.3z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Postman</span>
+          </div>
+          <!-- Git -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(240,80,50,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#F05032" d="M123.6 57.4L70.6 4.4c-3.2-3.2-8.4-3.2-11.6 0l-12 12 15.2 15.2c3.4-1.2 7.4-.3 10 2.3 2.6 2.6 3.5 6.6 2.3 10L88.9 58.3c3.4-1.2 7.4-.3 10 2.3 3.8 3.8 3.8 10 0 13.8s-10 3.8-13.8 0c-2.8-2.8-3.6-7-2.1-10.6L70.2 51v29.4c1.2.6 2.3 1.5 3.2 2.4 3.8 3.8 3.8 10 0 13.8s-10 3.8-13.8 0c-3.8-3.8-3.8-10 0-13.8 1.1-1.1 2.4-1.9 3.8-2.5V49.6c-1.4-.6-2.7-1.4-3.8-2.5-2.8-2.8-3.6-7-2.1-10.6L42.5 21.5 4.4 59.6c-3.2 3.2-3.2 8.4 0 11.6l53 53c3.2 3.2 8.4 3.2 11.6 0l54.6-55.2c3.2-3.2 3.2-8.4 0-11.6z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">Git</span>
+          </div>
+          <!-- GitHub -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(255,255,255,0.4)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><circle cx="64" cy="64" r="60" fill="#FFFFFF"/><path fill="#181717" d="M64 16.4c-26.3 0-47.6 21.3-47.6 47.6 0 21 13.6 38.9 32.5 45.2 2.4.4 3.3-1 3.3-2.3v-8.2c-13.2 2.9-16-6.4-16-6.4-2.2-5.5-5.3-7-5.3-7-4.3-3 .3-2.9.3-2.9 4.8.3 7.3 4.9 7.3 4.9 4.2 7.3 11.1 5.2 13.8 4 0.4-3.1 1.7-5.2 3-6.4-10.6-1.2-21.7-5.3-21.7-23.5 0-5.2 1.9-9.4 4.9-12.7-.5-1.2-2.1-6 0.5-12.6 0 0 4-1.3 13.1 4.9 3.8-1.1 7.9-1.6 12-1.6s8.2.5 12 1.6c9.1-6.2 13.1-4.9 13.1-4.9 2.6 6.5 1 11.4.5 12.6 3.1 3.3 4.9 7.5 4.9 12.7 0 18.3-11.2 22.3-21.8 23.5 1.7 1.5 3.3 4.4 3.3 8.9v13.2c0 1.3 0.9 2.8 3.3 2.3 18.9-6.3 32.5-24.1 32.5-45.2 0-26.3-21.3-47.6-47.6-47.6z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">GitHub</span>
+          </div>
+          <!-- VS Code -->
+          <div class="group flex flex-col items-center gap-3 cursor-pointer select-none">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center transition-all duration-300 transform group-hover:scale-115 group-hover:-translate-y-2 group-hover:drop-shadow-[0_12px_26px_rgba(0,122,204,0.5)]">
+              <svg viewBox="0 0 128 128" class="w-16 h-16 sm:w-20 sm:h-20"><path fill="#007ACC" d="M96.7 11.3L71.5 35.1 43.1 12.9 29.5 21v86l13.6 8.1 28.4-22.2 25.2 23.8L121 106.8V21.2L96.7 11.3zM96.7 89.2L68.8 64l27.9-25.2v50.4zm-48.4-5.3L37.2 92V36l11.1 8.1v39.8z"/></svg>
+            </div>
+            <span class="text-xs sm:text-sm font-sans tracking-wide text-mutedIvory/80 group-hover:text-white transition-colors">VS Code</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- MY WORKS (3D CAROUSEL) SECTION                                          -->
+  <!-- ======================================================================= -->
+  <section id="projects" class="relative py-28 px-4 sm:px-6 md:px-12 bg-[#050505] overflow-hidden select-none">
+    
+    <!-- Dynamic Ambient Room Lighting -->
+    <div id="ambient-glow" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[550px] rounded-full blur-[160px] pointer-events-none transition-all duration-700 opacity-25" style="background: #FBBF24;"></div>
+
+    <!-- Header & Auto-Scroll Toggle -->
+    <div class="max-w-7xl mx-auto mb-16 relative z-10">
+      <div class="editorial-divider mb-16"></div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-white/40">04 //</span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-silver/80">Selected Works</span>
+          </div>
+          <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-ivory font-normal tracking-tight">
+            My <span class="italic font-light text-white">Works.</span>
+          </h2>
+        </div>
+
+        <div class="flex items-center gap-4 sm:gap-6">
+          <!-- Auto-Scroll Toggle Button -->
+          <button id="autoscroll-toggle" class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-mono transition-all duration-300 border-emerald-500/40 bg-emerald-950/20 text-emerald-400">
+            <i data-lucide="pause" id="autoscroll-icon" class="w-3.5 h-3.5"></i>
+            <span id="autoscroll-label">Auto-Scroll: ON</span>
+          </button>
+
+          <!-- Counter -->
+          <div class="font-mono text-sm tracking-widest text-silver/80 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2">
+            <span id="carousel-current-num" class="text-white font-bold">01</span>
+            <span class="text-white/30">/</span>
+            <span class="text-white/50">03</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D Carousel Stage -->
+    <div id="carousel-stage" class="relative w-full max-w-6xl mx-auto h-[540px] sm:h-[580px] flex items-center justify-center perspective-container cursor-grab active:cursor-grabbing touch-none select-none z-10">
+      <!-- Cards will be injected & transformed dynamically via JS -->
+    </div>
+
+    <!-- Navigation Chevrons & Dots -->
+    <div class="max-w-6xl mx-auto mt-12 flex items-center justify-between relative z-20 px-4">
+      <button id="carousel-prev" class="p-3.5 rounded-full border border-white/10 bg-[#0c0c10] text-ivory hover:text-white hover:border-white/30 hover:scale-110 active:scale-95 transition-all shadow-lg focus:outline-none cursor-pointer" aria-label="Previous Project">
+        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+      </button>
+
+      <div id="carousel-dots" class="flex items-center gap-2">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <button id="carousel-next" class="p-3.5 rounded-full border border-white/10 bg-[#0c0c10] text-ivory hover:text-white hover:border-white/30 hover:scale-110 active:scale-95 transition-all shadow-lg focus:outline-none cursor-pointer" aria-label="Next Project">
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- RESUME SECTION                                                          -->
+  <!-- ======================================================================= -->
+  <section id="resume" class="relative py-28 px-6 md:px-12 bg-[#050505] overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="editorial-divider mb-20"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-white/40">05 //</span>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-silver/80">Curriculum Vitae</span>
+          </div>
+
+          <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-ivory font-normal tracking-tight">
+            Comprehensive <span class="italic font-light text-white">Resume.</span>
+          </h2>
+
+          <p class="text-base sm:text-lg text-mutedIvory font-light leading-relaxed max-w-xl">
+            Inspect verified competencies across Full-Stack Web Development, UI/UX Prototyping, and Academic Qualifications.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            <a href="DHARANI-RESUME.pdf" download="DHARANI-RESUME.pdf" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-mono text-xs uppercase tracking-widest font-semibold hover:bg-ivory hover:shadow-2xl transition-all">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download PDF</span>
+            </a>
+            <button id="open-resume-btn" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/20 bg-white/[0.04] text-ivory font-mono text-xs uppercase tracking-widest font-medium hover:bg-white/10 hover:border-white/40 transition-all">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Preview Online</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="p-8 rounded-3xl glass-panel relative overflow-hidden border border-white/10 shadow-2xl">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                <span class="font-mono text-xs text-silver/80 uppercase">DHARANI-RESUME.pdf</span>
+                <span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Verified File</span>
+              </div>
+              <p class="text-xs text-mutedIvory font-mono">B.Sc Computer Science • Creative Developer</p>
+              <p class="text-xs text-mutedIvory/70 leading-relaxed font-light">
+                Ready for offline review and recruitment screening.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- CONTACT SECTION                                                         -->
+  <!-- ======================================================================= -->
+  <section id="contact" class="relative py-28 px-6 md:px-12 bg-[#050505] overflow-hidden">
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="editorial-divider mb-20"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left: Direct Info & Socials -->
+        <div class="lg:col-span-6 space-y-8">
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs uppercase tracking-[0.25em] text-white/40">06 //</span>
+              <span class="font-mono text-xs uppercase tracking-[0.25em] text-silver/80">Get In Touch</span>
+            </div>
+            <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-ivory font-normal tracking-tight">
+              Let's create something <span class="italic font-light text-white">remarkable.</span>
+            </h2>
+          </div>
+
+          <p class="text-base text-mutedIvory font-light leading-relaxed max-w-lg">
+            Have a project in mind, an opportunity to discuss, or just want to say hello? Reach out directly via email, phone, or LinkedIn.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <!-- Email -->
+            <div class="p-5 rounded-2xl glass-panel flex items-center justify-between group">
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-ivory">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] font-mono uppercase tracking-wider text-mutedIvory/60">Email</div>
+                  <div class="font-mono text-sm text-ivory">dharanii0211@gmail.com</div>
+                </div>
+              </div>
+              <button onclick="copyText('dharanii0211@gmail.com', 'Email copied to clipboard!')" class="p-2 rounded-lg bg-white/[0.04] text-silver hover:text-white hover:bg-white/10 transition-colors" title="Copy Email">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Phone -->
+            <div class="p-5 rounded-2xl glass-panel flex items-center justify-between group">
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-ivory">
+                  <i data-lucide="phone" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <div class="text-[10px] font-mono uppercase tracking-wider text-mutedIvory/60">Phone</div>
+                  <div class="font-mono text-sm text-ivory">+9042228584</div>
+                </div>
+              </div>
+              <button onclick="copyText('+9042228584', 'Phone number copied to clipboard!')" class="p-2 rounded-lg bg-white/[0.04] text-silver hover:text-white hover:bg-white/10 transition-colors" title="Copy Phone">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-4 pt-2">
+              <a href="https://github.com/dharaniii-gif" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/[0.04] text-xs font-mono uppercase tracking-wider text-ivory hover:text-white hover:border-white/40 hover:bg-white/10 transition-all">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/dharani2006" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/[0.04] text-xs font-mono uppercase tracking-wider text-ivory hover:text-white hover:border-white/40 hover:bg-white/10 transition-all">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Functional Form -->
+        <div class="lg:col-span-6">
+          <form id="contact-form" class="p-8 sm:p-10 rounded-3xl glass-panel space-y-6">
+            <h3 class="font-serif text-2xl text-ivory font-medium">Send a Message</h3>
+            
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-widest text-silver/80 mb-2">Your Name</label>
+                <input type="text" id="form-name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-ivory placeholder:text-mutedIvory/40 focus:outline-none focus:border-white/40 transition-colors font-sans text-sm">
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-widest text-silver/80 mb-2">Email Address</label>
+                <input type="email" id="form-email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-ivory placeholder:text-mutedIvory/40 focus:outline-none focus:border-white/40 transition-colors font-sans text-sm">
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-widest text-silver/80 mb-2">Your Message</label>
+                <textarea id="form-message" rows="4" required placeholder="Let's build something great together..." class="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-ivory placeholder:text-mutedIvory/40 focus:outline-none focus:border-white/40 transition-colors font-sans text-sm resize-none"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" id="form-submit-btn" class="w-full py-4 rounded-xl bg-white text-black font-mono text-xs uppercase tracking-widest font-semibold hover:bg-ivory hover:shadow-xl transition-all cursor-pointer">
+              Send Message
+            </button>
+            <div id="form-status" class="hidden text-center text-xs font-mono text-emerald-400"></div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Minimal Footer -->
+      <footer class="mt-28 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-mutedIvory/60">
+        <div>Dharani – Creative Developer</div>
+        <div>Designed with passion.</div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- FULL-SCREEN PROJECT SHOWCASE MODAL                                      -->
+  <!-- ======================================================================= -->
+  <div id="project-modal" class="hidden fixed inset-0 z-[100] overflow-y-auto bg-[#050505] text-[#F5F5F0]">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 w-full px-6 md:px-12 py-4 bg-[#050505]/90 backdrop-blur-xl border-b border-white/[0.08] flex items-center justify-between">
+      <button onclick="closeProjectModal()" class="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] text-xs font-mono uppercase tracking-wider text-ivory hover:text-white hover:border-white/30 transition-all cursor-pointer">
+        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
+        <span>Back to Projects</span>
+      </button>
+
+      <div class="hidden sm:flex items-center gap-3">
+        <span id="modal-dot" class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+        <span id="modal-top-title" class="font-mono text-xs uppercase tracking-widest text-silver">Project</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a id="modal-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/[0.08] text-xs font-mono uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all">
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span>Live Demo</span>
+        </a>
+        <a id="modal-proto-btn" href="#" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-xs font-mono uppercase tracking-wider text-amber-300 hover:bg-amber-500 hover:text-black transition-all">
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+          <span>Visily Prototype</span>
+        </a>
+        <a id="modal-github-btn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] text-xs font-mono uppercase tracking-wider text-ivory hover:bg-white hover:text-black transition-all">
+          <i data-lucide="github" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">GitHub Repository</span>
+        </a>
+        <button onclick="closeProjectModal()" class="p-2 rounded-full border border-white/10 bg-white/[0.04] text-white hover:bg-white/15 transition-colors cursor-pointer" aria-label="Close presentation">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative min-h-screen pb-32">
+      <!-- Ambient Lighting -->
+      <div id="modal-ambient" class="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[550px] rounded-full blur-[160px] pointer-events-none opacity-30"></div>
+
+      <!-- Title & Concept -->
+      <section class="relative pt-16 sm:pt-24 pb-16 px-6 md:px-16 max-w-6xl mx-auto">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span id="modal-domain" class="px-3.5 py-1 rounded-full text-xs font-mono uppercase tracking-widest bg-white/10 text-white border border-white/20"></span>
+          <span id="modal-badge" class="px-3.5 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-white/[0.05] border border-white/10 text-mutedIvory"></span>
+          <span id="modal-number" class="font-mono text-xs tracking-widest text-white/40 ml-auto"></span>
+        </div>
+
+        <h1 id="modal-title" class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-ivory font-normal leading-[1.05] tracking-tight mb-8"></h1>
+        <p id="modal-concept" class="text-xl sm:text-2xl font-light text-silver/90 max-w-4xl leading-relaxed mb-12"></p>
+      </section>
+
+      <!-- Deep Dive -->
+      <section class="px-6 md:px-16 max-w-6xl mx-auto space-y-16">
+        <!-- Purpose Card -->
+        <div class="p-8 sm:p-12 rounded-3xl bg-[#0a0a0e] border border-white/[0.08] relative overflow-hidden">
+          <div class="relative z-10 max-w-3xl space-y-4">
+            <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-mutedIvory/60">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>Problem Statement & Verified Objective</span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-4xl text-ivory font-normal leading-snug">Why this project was engineered.</h2>
+            <p id="modal-purpose" class="text-base sm:text-lg text-mutedIvory/90 font-light leading-relaxed"></p>
+            <p id="modal-description" class="text-sm sm:text-base text-mutedIvory/70 font-light leading-relaxed pt-2"></p>
+          </div>
+        </div>
+
+        <!-- Verified Screenshots -->
+        <div id="modal-screenshots-container" class="space-y-6">
+          <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-mutedIvory/60">
+            <i data-lucide="image" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span>Verified Visuals & Interface Screens</span>
+          </div>
+          <h3 class="font-serif text-3xl sm:text-4xl text-ivory font-normal">Actual Project Screenshots</h3>
+          <div id="modal-screenshots-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </div>
+
+        <!-- Features Breakdown -->
+        <div class="space-y-8">
+          <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-mutedIvory/60">
+            <i data-lucide="layers" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span>Feature Architecture</span>
+          </div>
+          <h3 class="font-serif text-3xl sm:text-4xl text-ivory font-normal">Features Verified from Source Code & Documentation</h3>
+          <div id="modal-features-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+
+        <!-- Bottom Action CTA -->
+        <div id="modal-action-card" class="p-8 sm:p-12 rounded-3xl border transition-all text-center space-y-6 relative overflow-hidden">
+          <h4 class="font-serif text-3xl sm:text-4xl text-ivory font-medium">Explore the Project Artifacts</h4>
+          <p class="max-w-xl mx-auto text-sm text-mutedIvory/80 font-light">Inspect the repository on GitHub or test the live prototype/deployment directly.</p>
+          <div id="modal-bottom-links" class="flex flex-wrap items-center justify-center gap-4 pt-2"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- LIGHTBOX SCREENSHOT PREVIEW MODAL                                       -->
+  <!-- ======================================================================= -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 z-[120] bg-black/95 backdrop-blur-md p-4 sm:p-8 flex items-center justify-center overflow-y-auto cursor-zoom-out" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/15 text-white hover:bg-white/30 transition-all cursor-pointer" aria-label="Close image">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <div class="relative max-w-5xl my-auto py-6" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="Enlarged screenshot" class="w-auto max-h-[90vh] mx-auto object-contain rounded-2xl shadow-2xl border border-white/20">
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- RESUME PREVIEW MODAL                                                    -->
+  <!-- ======================================================================= -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-[100] bg-black/90 backdrop-blur-md p-4 sm:p-8 flex flex-col items-center justify-center">
+    <div class="w-full max-w-5xl bg-[#0a0a0d] border border-white/20 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[90vh]">
+      <div class="px-6 py-4 bg-[#121216] border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <i data-lucide="file-text" class="w-4 h-4 text-emerald-400"></i>
+          <span class="font-mono text-xs uppercase tracking-wider text-ivory">DHARANI-RESUME.pdf</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="DHARANI-RESUME.pdf" download="DHARANI-RESUME.pdf" class="px-4 py-1.5 rounded-full bg-white text-black font-mono text-xs uppercase tracking-wider font-semibold hover:bg-ivory transition-all">Download</a>
+          <button onclick="closeResumeModal()" class="p-1.5 rounded-full text-white/60 hover:text-white" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+      </div>
+      <div class="flex-1 w-full bg-[#18181b]">
+        <iframe src="DHARANI-RESUME.pdf" class="w-full h-full border-none"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-8 right-8 z-[200] px-5 py-3 rounded-xl bg-white text-black font-mono text-xs uppercase tracking-wider shadow-2xl transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none"></div>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT APPLICATION CODE                                     -->
+  <!-- ======================================================================= -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 1. DATA MODELS
+    // -------------------------------------------------------------------------
+    const PROJECTS = [
+      {
+        id: "elite-canine",
+        number: "01",
+        title: "Elite Canine – UI/UX Design",
+        domain: "UI/UX & Product Design",
+        concept: "High-Fidelity Canine Magazine, Breed Discovery Platform & Heritage UI/UX Specification",
+        stack: ["Visily", "UI/UX Design", "Wireframing", "High-Fidelity Prototyping", "Design System", "Dark Theme UI"],
+        description: "A comprehensive UI/UX design prototype engineered for canine enthusiasts to explore dog breeds, read curated magazine articles, compare breed temperaments, and navigate canine historical archives, hosted in Dharani's central PROJECTS repository alongside the full design specification document.",
+        purpose: "Crafting an intuitive, visually harmonious, and engaging digital experience in Visily following user-centered navigation, consistent card-based layouts, and responsive design principles.",
+        features: [
+          "Modern Home Page featuring featured editorials, hero discovery banners, and curated categories",
+          "Comprehensive Breed Collection catalog with multi-attribute filtering and visual cards",
+          "Detailed Breed Profile screens displaying origins, physical traits, care guides, and temperament indicators",
+          "Canine Atlas mapping global breed heritage and geographical origins",
+          "Magazine Hub and deep-dive Article Details layout for editorial reading",
+          "Interactive Breed Comparison view benchmarking multiple breeds side-by-side",
+          "Curated showcases for Breeds by Country, Rare Breeds, and Canine History Timeline",
+          "Includes full 6.8MB specification document (EliteCanine.pdf.pdf) hosted in Dharani's PROJECTS monorepo"
+        ],
+        contribution: [
+          "Spearheaded user research and complete wireframing process in Visily",
+          "Constructed a high-contrast dark theme design system with warm golden-amber accents",
+          "Engineered reusable UI components including breed cards, article cards, and filter chips",
+          "Designed an interactive clickable prototype linking all 11+ application viewports",
+          "Curated production-ready assets and design specifications in GitHub PROJECTS archive"
+        ],
+        screenshots: [
+          { url: "projects/elite-canine/elite-canine-home.png", caption: "Canine Elite — Luxury Magazine & Breed Discovery Hero" },
+          { url: "projects/elite-canine/elite-canine-breed-collections.png", caption: "Breed Collections — Working, Hound, Herding, Sporting & Terrier Groups" },
+          { url: "projects/elite-canine/elite-canine-breed-comparison.png", caption: "Interactive Breed Comparison — Technical Specs, Cognitive Mastery & Lifestyle Compatibility" },
+          { url: "projects/elite-canine/elite-canine-atlas-heritage.png", caption: "The Atlas of Canine Heritage — Historical Migration Paths & Global Breed Directory" },
+          { url: "projects/elite-canine/elite-canine-history-timeline.png", caption: "The Thread of History — Canine Evolutionary Timeline from 15,000 BC to Modern Day" },
+          { url: "projects/elite-canine/elite-canine-magazine-editorial.png", caption: "Magazine Hub & Editorial Narratives — The Silent Guardians & The Weekly Dispatch" },
+          { url: "projects/elite-canine/elite-canine-borzoi-article.png", caption: "Deep-Dive Article Layout — A Borzoi Odyssey, Typography & Anatomy of Aristocracy" },
+          { url: "projects/elite-canine/elite-canine-about-publication.png", caption: "Publication Story & Editorial Board — The Elite Standards & Chronicle of Growth" }
+        ],
+        theme: {
+          primary: "#FBBF24",
+          secondary: "#EAB308",
+          glow: "rgba(250, 204, 21, 0.60)",
+          cardBg: "linear-gradient(145deg, rgba(42, 34, 10, 0.92) 0%, rgba(20, 16, 5, 0.98) 100%)",
+          border: "rgba(250, 204, 21, 0.70)",
+          tagBg: "rgba(250, 204, 21, 0.20)",
+          textAccent: "#FEF08A"
+        },
+        githubUrl: "https://github.com/dharaniii-gif/PROJECTS",
+        prototypeUrl: "https://app.visily.ai/projects/264e8da9-6585-4fad-b787-581d1299c27d/boards/2612581",
+        badge: "Verified in PROJECTS Repo"
+      },
+      {
+        id: "shopsphere-dashboard",
+        number: "02",
+        title: "ShopSphere Dashboard",
+        domain: "E-Commerce Administration",
+        concept: "Full-Stack Merchant Administration & Real-Time Analytics Command Center",
+        stack: ["React 18", "Node.js", "Express 5", "MongoDB / Mongoose", "Socket.io", "Chart.js", "Recharts", "Vite"],
+        description: "A full-stack administrative platform featuring real-time socket updates, business telemetry charts, modular admin views, and configured REST API endpoints.",
+        purpose: "Providing store managers with a central administrative dashboard to monitor orders, inspect real-time metrics, review sales charts, and handle inventory operations.",
+        features: [
+          "Decoupled full-stack architecture with dedicated frontend-client and backend-server",
+          "Real-time bidirectional synchronization powered by Socket.io client and server",
+          "Interactive data visualizations with Chart.js, react-chartjs-2, and Recharts",
+          "Admin authentication flows with AdminLogin view and environment-driven API URLs",
+          "Express REST API controllers configured with CORS, Mongoose models, and dotenv",
+          "Deployment manifests configured for Render (render.yaml, Procfile) and Vercel (vercel.json)"
+        ],
+        contribution: [
+          "Configured end-to-end client and server repositories with Vite, React 18, and Express 5",
+          "Implemented SocketContext for real-time socket events across dashboard views",
+          "Integrated charting libraries for commercial telemetry and order monitoring",
+          "Structured environment variables for dynamic switching between local development and production URLs"
+        ],
+        screenshots: [],
+        theme: {
+          primary: "#0284C7",
+          secondary: "#38BDF8",
+          glow: "rgba(14, 165, 233, 0.60)",
+          cardBg: "linear-gradient(145deg, rgba(8, 26, 48, 0.92) 0%, rgba(4, 12, 24, 0.98) 100%)",
+          border: "rgba(14, 165, 233, 0.70)",
+          tagBg: "rgba(14, 165, 233, 0.20)",
+          textAccent: "#7DD3FC"
+        },
+        githubUrl: "https://github.com/dharaniii-gif/shopshpere-dashboard",
+        liveUrl: "https://dharaniii-gif.github.io/shopshpere-dashboard/",
+        badge: "Live on GitHub Pages"
+      },
+      {
+        id: "restaurant-website",
+        number: "03",
+        title: "Fresh Food – Responsive E-Commerce",
+        domain: "Responsive E-Commerce",
+        concept: "Responsive Food E-Commerce Platform & Culinary Ordering Experience",
+        stack: ["HTML5", "CSS3", "JavaScript", "CSS Flexbox", "CSS Grid", "Responsive Design", "E-Commerce UI"],
+        description: "A fully responsive food e-commerce web platform engineered for intuitive browsing, culinary product catalogs, promotional offers, and table reservation workflows across all modern devices.",
+        purpose: "Building a production-ready responsive food e-commerce storefront from scratch demonstrating semantic frontend architecture, mobile-first design, interactive menu exploration, and dynamic client validation.",
+        features: [
+          "Interactive Food Catalog & E-Commerce Menu presentation with category filtering",
+          "Special Promotional Deals & Discount Showcase driving customer conversions",
+          "Table Reservation & Online Order booking form with JavaScript input handling",
+          "Customer Reviews & Testimonial Ratings establishing commercial trust",
+          "Visual Culinary Gallery and Catering service packages",
+          "Fully responsive layout optimized across smartphones, tablets, and desktop displays",
+          "Smooth micro-interactions, responsive navigation bar, and accessible CTA buttons"
+        ],
+        contribution: [
+          "Engineered semantic HTML5 markup and custom CSS grid/flexbox e-commerce layout",
+          "Implemented client-side JavaScript logic for menu item toggles and reservation validation",
+          "Designed responsive media queries ensuring pixel-perfect fidelity across all viewports",
+          "Deployed public production build directly to GitHub Pages"
+        ],
+        screenshots: [
+          { url: "https://github.com/user-attachments/assets/6ecc3784-d175-40a7-9a51-bd8393de328c", caption: "Fresh Food E-Commerce — Hero Landing Section & Navigation" },
+          { url: "https://github.com/user-attachments/assets/06aa60e2-31e8-4fdf-8c88-a522acf65438", caption: "Interactive Food Menu & E-Commerce Category Catalog" },
+          { url: "https://github.com/user-attachments/assets/0e6beed5-fd20-47fb-a18c-8ca7652a28ca", caption: "Promotional Specials & Limited-Time Deals Showcase" },
+          { url: "https://github.com/user-attachments/assets/ad10f144-467d-4b07-8d2b-e4574ec369cf", caption: "Table Reservation & Online Order Booking Integration" }
+        ],
+        theme: {
+          primary: "#10B981",
+          secondary: "#059669",
+          glow: "rgba(16, 185, 129, 0.60)",
+          cardBg: "linear-gradient(145deg, rgba(8, 38, 22, 0.92) 0%, rgba(4, 20, 12, 0.98) 100%)",
+          border: "rgba(16, 185, 129, 0.70)",
+          tagBg: "rgba(16, 185, 129, 0.20)",
+          textAccent: "#6EE7B7"
+        },
+        githubUrl: "https://github.com/dharaniii-gif/restraurant-website",
+        liveUrl: "https://dharaniii-gif.github.io/restraurant-website/",
+        badge: "Live on GitHub Pages"
+      }
+    ];
+
+    // -------------------------------------------------------------------------
+    // 2. 3D PROJECT CAROUSEL CONTROLLER
+    // -------------------------------------------------------------------------
+    let currentIndex = 0;
+    let autoPlay = true;
+    let autoPlayTimer = null;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragDistance = 0;
+
+    const stageEl = document.getElementById('carousel-stage');
+    const dotsEl = document.getElementById('carousel-dots');
+    const currentNumEl = document.getElementById('carousel-current-num');
+    const ambientGlowEl = document.getElementById('ambient-glow');
+    const autoScrollBtn = document.getElementById('autoscroll-toggle');
+    const autoScrollLabel = document.getElementById('autoscroll-label');
+    const autoScrollIcon = document.getElementById('autoscroll-icon');
+
+    function renderCarousel() {
+      const total = PROJECTS.length;
+      currentNumEl.textContent = PROJECTS[currentIndex].number;
+      ambientGlowEl.style.background = PROJECTS[currentIndex].theme.primary;
+
+      // Render Dots
+      dotsEl.innerHTML = '';
+      PROJECTS.forEach((proj, idx) => {
+        const btn = document.createElement('button');
+        const isActive = idx === currentIndex;
+        btn.className = `transition-all duration-500 rounded-full cursor-pointer ${isActive ? 'w-10 h-2' : 'w-2 h-2 bg-white/20 hover:bg-white/50'}`;
+        if (isActive) btn.style.backgroundColor = proj.theme.primary;
+        btn.onclick = () => {
+          currentIndex = idx;
+          renderCarousel();
+        };
+        dotsEl.appendChild(btn);
+      });
+
+      // Render Cards in 3D
+      stageEl.innerHTML = '';
+      PROJECTS.forEach((proj, index) => {
+        let offset = index - currentIndex;
+        if (offset > total / 2) offset -= total;
+        if (offset < -total / 2) offset += total;
+
+        const isCenter = offset === 0;
+        const isImmediate = Math.abs(offset) === 1;
+
+        const translateXBase = offset * 320;
+        const dragInfluence = isDragging ? dragDistance * 0.8 : 0;
+        const totalTranslateX = translateXBase + dragInfluence;
+        const translateZ = isCenter ? 70 : -100 - Math.abs(offset) * 60;
+        const baseRotateY = offset * -20;
+        const scale = isCenter ? 1 : 0.88;
+        const opacity = isCenter ? 1 : (isImmediate ? 0.65 : 0.2);
+        const zIndex = 30 - Math.abs(offset) * 5;
+
+        const card = document.createElement('div');
+        card.className = `absolute w-[330px] sm:w-[420px] md:w-[480px] h-[480px] sm:h-[520px] rounded-[28px] p-6 sm:p-8 flex flex-col justify-between backface-hidden cursor-pointer`;
+        card.style.transform = `translateX(${totalTranslateX}px) translateZ(${translateZ}px) rotateY(${baseRotateY}deg) scale(${scale})`;
+        card.style.zIndex = zIndex;
+        card.style.opacity = opacity;
+        card.style.transition = isDragging ? 'none' : 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease';
+
+        card.innerHTML = `
+          <div class="absolute inset-0 rounded-[28px] transition-all duration-500 overflow-hidden"
+               style="background: ${proj.theme.cardBg};
+                      border: ${isCenter ? '1.5px solid ' + proj.theme.border : '1px solid rgba(255, 255, 255, 0.08)'};
+                      box-shadow: ${isCenter ? '0 30px 80px -15px ' + proj.theme.glow + ', 0 0 35px -5px ' + proj.theme.primary + '50' : '0 15px 30px rgba(0, 0, 0, 0.8)'};">
+            
+            <div class="absolute -top-24 -right-24 w-60 h-60 rounded-full blur-2xl opacity-30 pointer-events-none" style="background: ${proj.theme.secondary};"></div>
+
+            <!-- Top Corner Badge & Domain -->
+            <div class="relative z-10 p-6 sm:p-8 flex items-start justify-between">
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-mono uppercase tracking-[0.2em] px-2.5 py-1 rounded-full"
+                        style="background: ${proj.theme.tagBg}; color: ${proj.theme.textAccent}; border: 1px solid ${proj.theme.border};">
+                    ${proj.domain}
+                  </span>
+                  ${proj.badge ? `<span class="text-[10px] font-mono uppercase tracking-wider text-white/50 hidden sm:inline-block">• ${proj.badge}</span>` : ''}
+                </div>
+                <div class="font-mono text-xs tracking-widest text-white/40">PROJECT // ${proj.number}</div>
+              </div>
+
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-mono text-xs font-bold"
+                   style="background: rgba(255, 255, 255, 0.05); border: 1px solid ${proj.theme.border}; color: ${proj.theme.textAccent};">
+                ${proj.number}
+              </div>
+            </div>
+
+            <!-- Center Content -->
+            <div class="relative z-10 px-6 sm:px-8 mt-2 space-y-3">
+              <h3 class="font-serif text-3xl sm:text-4xl text-ivory font-medium tracking-tight leading-tight">${proj.title}</h3>
+              <p class="text-xs sm:text-sm font-mono text-silver/80 font-normal">${proj.concept}</p>
+              <p class="text-xs sm:text-sm text-mutedIvory/80 line-clamp-3 font-light leading-relaxed">${proj.description}</p>
+            </div>
+
+            <!-- Bottom Stack & Actions -->
+            <div class="relative z-10 p-6 sm:p-8 mt-auto space-y-4">
+              <div class="flex flex-wrap gap-1.5">
+                ${proj.stack.slice(0, 4).map(t => `<span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/[0.04] text-silver/90 border border-white/5">${t}</span>`).join('')}
+                ${proj.stack.length > 4 ? `<span class="text-[10px] font-mono px-2 py-0.5 rounded text-white/40">+${proj.stack.length - 4}</span>` : ''}
+              </div>
+
+              <div class="pt-2 flex items-center justify-between border-t border-white/[0.08]">
+                <span class="text-[11px] font-mono uppercase tracking-wider text-mutedIvory/60 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full" style="background: ${proj.theme.primary};"></span>
+                  <span class="hidden sm:inline">Verified Artifacts</span>
+                  <span class="sm:hidden">Case Study</span>
+                </span>
+                
+                <div class="flex items-center gap-2">
+                  ${proj.githubUrl ? `
+                    <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="p-2 rounded-full border border-white/15 bg-white/[0.04] text-silver hover:text-white hover:border-white/30 hover:bg-white/15 transition-all" title="Open GitHub Repo">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>` : ''}
+                  ${proj.liveUrl ? `
+                    <a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="p-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:text-white hover:border-emerald-400 hover:bg-emerald-500/25 transition-all" title="Open Live Website">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>` : ''}
+                  <button onclick="event.stopPropagation(); openProjectModal(${index});" class="px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider text-white flex items-center gap-1.5 transition-all duration-300 hover:scale-105 active:scale-95 shadow-md cursor-pointer" style="background: ${proj.theme.primary}; box-shadow: 0 4px 18px ${proj.theme.glow};">
+                    <span>Explore</span>
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        card.onclick = (e) => {
+          if (Math.abs(dragDistance) < 10) {
+            if (isCenter) {
+              openProjectModal(index);
+            } else {
+              currentIndex = index;
+              renderCarousel();
+            }
+          }
+        };
+
+        stageEl.appendChild(card);
+      });
+      
+      lucide.createIcons();
+    }
+
+    function nextProject() {
+      currentIndex = (currentIndex + 1) % PROJECTS.length;
+      renderCarousel();
+    }
+
+    function prevProject() {
+      currentIndex = (currentIndex - 1 + PROJECTS.length) % PROJECTS.length;
+      renderCarousel();
+    }
+
+    function startAutoScroll() {
+      stopAutoScroll();
+      if (!autoPlay) return;
+      autoPlayTimer = setInterval(() => {
+        if (!isDragging) nextProject();
+      }, 3000);
+    }
+
+    function stopAutoScroll() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    // Auto-Scroll Toggle Button
+    autoScrollBtn.onclick = () => {
+      autoPlay = !autoPlay;
+      if (autoPlay) {
+        autoScrollLabel.textContent = 'Auto-Scroll: ON';
+        autoScrollBtn.className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-mono transition-all duration-300 border-emerald-500/40 bg-emerald-950/20 text-emerald-400';
+        autoScrollIcon.setAttribute('data-lucide', 'pause');
+        startAutoScroll();
+      } else {
+        autoScrollLabel.textContent = 'Auto-Scroll: OFF';
+        autoScrollBtn.className = 'flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-mono transition-all duration-300 border-white/10 bg-white/[0.03] text-mutedIvory hover:text-white';
+        autoScrollIcon.setAttribute('data-lucide', 'play');
+        stopAutoScroll();
+      }
+      lucide.createIcons();
+    };
+
+    // Prev / Next Buttons
+    document.getElementById('carousel-prev').onclick = () => {
+      prevProject();
+      if (autoPlay) startAutoScroll();
+    };
+    document.getElementById('carousel-next').onclick = () => {
+      nextProject();
+      if (autoPlay) startAutoScroll();
+    };
+
+    // Pointer Drag Handlers
+    stageEl.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('button') || e.target.closest('a')) return;
+      isDragging = true;
+      dragStartX = e.clientX;
+      dragDistance = 0;
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      dragDistance = e.clientX - dragStartX;
+    });
+
+    window.addEventListener('pointerup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (dragDistance < -50) {
+        nextProject();
+      } else if (dragDistance > 50) {
+        prevProject();
+      }
+      dragDistance = 0;
+      renderCarousel();
+    });
+
+    // Keyboard Arrow navigation
+    window.addEventListener('keydown', (e) => {
+      if (document.getElementById('project-modal').classList.contains('hidden')) {
+        if (e.key === 'ArrowRight') nextProject();
+        if (e.key === 'ArrowLeft') prevProject();
+      }
+    });
+
+    // -------------------------------------------------------------------------
+    // 3. PROJECT SHOWCASE MODAL
+    // -------------------------------------------------------------------------
+    const modalEl = document.getElementById('project-modal');
+    let currentModalIdx = 0;
+
+    function openProjectModal(index) {
+      currentModalIdx = index;
+      const proj = PROJECTS[index];
+      
+      document.body.style.overflow = 'hidden';
+      modalEl.classList.remove('hidden');
+
+      document.getElementById('modal-dot').style.backgroundColor = proj.theme.primary;
+      document.getElementById('modal-top-title').textContent = proj.title;
+      document.getElementById('modal-domain').textContent = proj.domain;
+      document.getElementById('modal-badge').textContent = proj.badge || 'Verified Project';
+      document.getElementById('modal-number').textContent = `CASE STUDY // ${proj.number}`;
+      document.getElementById('modal-title').textContent = proj.title;
+      document.getElementById('modal-concept').textContent = proj.concept;
+      document.getElementById('modal-purpose').textContent = proj.purpose;
+      document.getElementById('modal-description').textContent = proj.description;
+      document.getElementById('modal-ambient').style.background = proj.theme.secondary;
+
+      // Header Live & Proto buttons
+      const liveBtn = document.getElementById('modal-live-btn');
+      if (proj.liveUrl) {
+        liveBtn.href = proj.liveUrl;
+        liveBtn.classList.remove('hidden');
+        liveBtn.classList.add('inline-flex');
+      } else {
+        liveBtn.classList.add('hidden');
+        liveBtn.classList.remove('inline-flex');
+      }
+
+      const protoBtn = document.getElementById('modal-proto-btn');
+      if (proj.prototypeUrl) {
+        protoBtn.href = proj.prototypeUrl;
+        protoBtn.classList.remove('hidden');
+        protoBtn.classList.add('inline-flex');
+      } else {
+        protoBtn.classList.add('hidden');
+        protoBtn.classList.remove('inline-flex');
+      }
+
+      document.getElementById('modal-github-btn').href = proj.githubUrl;
+
+      // Screenshots
+      const scGrid = document.getElementById('modal-screenshots-grid');
+      const scContainer = document.getElementById('modal-screenshots-container');
+      if (proj.screenshots && proj.screenshots.length > 0) {
+        scContainer.classList.remove('hidden');
+        scGrid.innerHTML = proj.screenshots.map(s => `
+          <div onclick="openLightbox('${s.url}')" class="group relative rounded-2xl overflow-hidden bg-[#0a0a0d] border border-white/10 hover:border-white/30 transition-all cursor-zoom-in">
+            <div class="aspect-video w-full overflow-hidden bg-[#111116] flex items-center justify-center">
+              <img src="${s.url}" alt="${s.caption}" loading="lazy" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-4 bg-[#0a0a0d]/90 backdrop-blur-md border-t border-white/5 flex items-center justify-between">
+              <span class="text-xs font-mono text-silver/90">${s.caption}</span>
+              <span class="text-[10px] font-mono text-white/40 uppercase tracking-widest">Click to Zoom</span>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        scContainer.classList.add('hidden');
+      }
+
+      // Features
+      const featGrid = document.getElementById('modal-features-grid');
+      featGrid.innerHTML = proj.features.map(f => `
+        <div class="p-6 rounded-2xl bg-[#0c0c10] border border-white/[0.06] flex items-start gap-3.5">
+          <svg class="w-5 h-5 shrink-0 mt-0.5" style="color: ${proj.theme.primary};" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p class="text-sm text-mutedIvory/90 leading-relaxed font-light">${f}</p>
+        </div>
+      `).join('');
+
+      // Bottom Links
+      const bottomLinks = document.getElementById('modal-bottom-links');
+      const actionCard = document.getElementById('modal-action-card');
+      actionCard.style.background = proj.theme.cardBg;
+      actionCard.style.borderColor = proj.theme.border;
+      actionCard.style.boxShadow = `0 25px 60px -20px ${proj.theme.glow}`;
+
+      bottomLinks.innerHTML = `
+        <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-mono text-xs uppercase tracking-widest font-semibold hover:bg-ivory hover:shadow-lg transition-all">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          <span>GitHub Repository</span>
+        </a>
+        ${proj.prototypeUrl ? `
+          <a href="${proj.prototypeUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-300 font-mono text-xs uppercase tracking-widest font-medium hover:bg-amber-400 hover:text-black transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span>Open Visily Prototype</span>
+          </a>` : ''}
+        ${proj.liveUrl ? `
+          <a href="${proj.liveUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 bg-white/[0.05] text-ivory font-mono text-xs uppercase tracking-widest font-medium hover:bg-white/15 transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Launch Live Site</span>
+          </a>` : ''}
+      `;
+
+      lucide.createIcons();
+    }
+
+    function closeProjectModal() {
+      document.body.style.overflow = 'unset';
+      modalEl.classList.add('hidden');
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. SCREENSHOT LIGHTBOX
+    // -------------------------------------------------------------------------
+    const lightboxEl = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(url) {
+      lightboxImg.src = url;
+      lightboxEl.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      lightboxEl.classList.add('hidden');
+      lightboxImg.src = '';
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. RESUME MODAL
+    // -------------------------------------------------------------------------
+    const resumeModalEl = document.getElementById('resume-modal');
+    document.getElementById('open-resume-btn').onclick = () => {
+      document.body.style.overflow = 'hidden';
+      resumeModalEl.classList.remove('hidden');
+    };
+
+    function closeResumeModal() {
+      document.body.style.overflow = 'unset';
+      resumeModalEl.classList.add('hidden');
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. UTILITIES (Copy, Toast, Form)
+    // -------------------------------------------------------------------------
+    function copyText(text, message) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(message);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    // Contact form submit
+    document.getElementById('contact-form').onsubmit = (e) => {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      const btn = document.getElementById('form-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        btn.textContent = 'Message Sent!';
+        status.textContent = 'Thank you! Your message has been received.';
+        status.classList.remove('hidden');
+        showToast('Message sent successfully!');
+        e.target.reset();
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          status.classList.add('hidden');
+        }, 4000);
+      }, 1000);
+    };
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.onclick = () => {
+      mobileMenu.classList.toggle('hidden');
+    };
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.onclick = () => mobileMenu.classList.add('hidden');
+    });
+
+    // Escape Key to close modals
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!lightboxEl.classList.contains('hidden')) {
+          closeLightbox();
+        } else if (!resumeModalEl.classList.contains('hidden')) {
+          closeResumeModal();
+        } else if (!modalEl.classList.contains('hidden')) {
+          closeProjectModal();
+        }
+      }
+    });
+
+    // -------------------------------------------------------------------------
+    // INITIALIZATION
+    // -------------------------------------------------------------------------
+    renderCarousel();
+    startAutoScroll();
+    lucide.createIcons();
+  </script>
+</body>
 </html>
